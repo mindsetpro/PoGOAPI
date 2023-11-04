@@ -83,36 +83,7 @@
         <p>If you encounter any issues or have any questions, please reach out to us at <a
                 href="mailto:gdnunuuwu@gmail.com">gdnunuuwu@gmail.com</a>.</p>
         <p>Feel free to explore the data and use it in your applications!</p>
-
-        <!-- Add the endpoint searcher -->
-        <h2>Endpoint Searcher</h2>
-        <p>Search for data in the "Pokemon__stat__.json" endpoint:</p>
-        <form onsubmit="searchEndpoint(event)">
-            <input type="text" id="endpointInput" placeholder="Enter ID...">
-            <button type="submit" class="button">Search</button>
-        </form>
-        <div id="searchResult" style="display: none;">
-            <h3>Search Result:</h3>
-            <pre id="searchData"></pre>
-        </div>
     </div>
-
-    <script>
-        // Function to handle the endpoint search
-        function searchEndpoint(event) {
-            event.preventDefault();
-            var input = document.getElementById('endpointInput').value;
-            var url = "https://mindsetpro.github.io/PoGOAPI/Pokemon__stat__.json/" + input;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    var searchData = JSON.stringify(data, null, 4);
-                    document.getElementById('searchData').innerText = searchData;
-                    document.getElementById('searchResult').style.display = 'block';
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    </script>
 </body>
 
 </html>
