@@ -84,29 +84,35 @@
                 href="mailto:gdnunuuwu@gmail.com">gdnunuuwu@gmail.com</a>.</p>
         <p>Feel free to explore the data and use it in your applications!</p>
 
-        <!-- Add the endpoint searcher for Pokemon__stat__.json -->
-        <h2>Search Pokemon__stat__.json Data</h2>
-        <p>Enter the ID to search for specific Pokémon data:</p>
-        <form id="searchForm" onsubmit="return searchPokemonData()">
-            <input type="text" id="idInput" placeholder="Enter ID...">
-            <button type="submit">Search</button>
+        <!-- Add the endpoint searcher -->
+        <h2>Endpoint Searcher</h2>
+        <p>Search for data in the "Pokemon__stat__.json" endpoint:</p>
+        <form onsubmit="searchEndpoint(event)">
+            <input type="text" id="endpointInput" placeholder="Enter ID...">
+            <button type="submit" class="button">Search</button>
         </form>
-        <div id="searchResult"></div>
-
-        <script>
-            function searchPokemonData() {
-                var id = document.getElementById('idInput').value;
-                fetch(`Pokemon__stat__.json/${id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        var searchResult = document.getElementById('searchResult');
-                        searchResult.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-                    })
-                    .catch(error => console.error('Error:', error));
-                return false;
-            }
-        </script>
+        <div id="searchResult" style="display: none;">
+            <h3>Search Result:</h3>
+            <pre id="searchData"></pre>
+        </div>
     </div>
+
+    <script>
+        // Function to handle the endpoint search
+        function searchEndpoint(event) {
+            event.preventDefault();
+            var input = document.getElementById('endpointInput').value;
+            var url = "https://mindsetpro.github.io/PoGOAPI/Pokemon__stat__.json/" + input;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var searchData = JSON.stringify(data, null, 4);
+                    document.getElementById('searchData').innerText = searchData;
+                    document.getElementById('searchResult').style.display = 'block';
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 
 </html>
