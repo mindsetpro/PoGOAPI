@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoGoAPI Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        p {
+            color: #444;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .toggle {
+            background-color: #f4f4f4;
+            color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .toggle-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>PoGoAPI Documentation</h1>
+
+        <div class="content">
+            <h2>Introduction</h2>
+            <p>PoGoAPI is a simple RESTful API for retrieving data related to Pokémon Go. The API provides access to
+                information such as evolution chains, move data, and Pokémon statistics.</p>
+        </div>
+
+        <div class="content">
+            <h2>Usage</h2>
+            <p>Use the provided endpoints to access the necessary data for your Pokémon Go-related applications.</p>
+
+            <div class="toggle" onclick="toggle(this)">
+                <span>Endpoints</span>
+            </div>
+            <div class="toggle-content">
+                <ul>
+                    <li>Evolution Chain: <code>https://yourdomain.com/evo__.json</code></li>
+                    <li>Move Data: <code>https://yourdomain.com/moves__.json</code></li>
+                    <li>Pokémon Data: <code>https://yourdomain.com/Pokemon__stat__.json</code></li>
+                </ul>
+            </div>
+
+            <div class="toggle" onclick="toggle(this)">
+                <span>Example Usage</span>
+            </div>
+            <div class="toggle-content">
+                <p>To retrieve the evolution chain of a particular Pokémon, use the provided endpoint and handle the
+                    JSON data accordingly.</p>
+                <pre><code>fetch('https://yourdomain.com/evo__.json')
+    .then(response => response.json())
+    .then(data => {
+        // Handle the data here
+    })
+    .catch(error => console.error('Error:', error));
+</code></pre>
+            </div>
+
+            <div class="toggle" onclick="toggle(this)">
+                <span>Additional Information</span>
+            </div>
+            <div class="toggle-content">
+                <p>For additional details or inquiries, please contact us at <a
+                        href="mailto:gdnunuuwu@gmail.com">gdnunuuwu@gmail.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggle(el) {
+            var content = el.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
