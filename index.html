@@ -83,6 +83,29 @@
         <p>If you encounter any issues or have any questions, please reach out to us at <a
                 href="mailto:gdnunuuwu@gmail.com">gdnunuuwu@gmail.com</a>.</p>
         <p>Feel free to explore the data and use it in your applications!</p>
+
+        <!-- Add the endpoint searcher for Pokemon__stat__.json -->
+        <h2>Search Pokemon__stat__.json Data</h2>
+        <p>Enter the ID to search for specific Pokémon data:</p>
+        <form id="searchForm" onsubmit="return searchPokemonData()">
+            <input type="text" id="idInput" placeholder="Enter ID...">
+            <button type="submit">Search</button>
+        </form>
+        <div id="searchResult"></div>
+
+        <script>
+            function searchPokemonData() {
+                var id = document.getElementById('idInput').value;
+                fetch(`Pokemon__stat__.json/${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        var searchResult = document.getElementById('searchResult');
+                        searchResult.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    })
+                    .catch(error => console.error('Error:', error));
+                return false;
+            }
+        </script>
     </div>
 </body>
 
